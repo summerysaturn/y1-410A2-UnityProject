@@ -1,4 +1,4 @@
-# [Mini-Card](.github/mini-card.png)
+# ![Mini-Card](.github/mini-card.png)
 
 <br/>
 
