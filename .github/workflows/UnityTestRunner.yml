@@ -27,4 +27,7 @@ jobs:
       - name: Unity - Test runner
         uses: game-ci/unity-test-runner@v2.0-alpha-2
         env:
-          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }} 
+        with:
+          # remove me soon!
+          unityVersion: 2019.4.19f1
