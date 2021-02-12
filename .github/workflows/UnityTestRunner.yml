@@ -1,10 +1,8 @@
 name: GameCI Suite
 
 on:
-  # Disabling for now
-  #pull_request: {}
-  #push: { branches: [main] }
-  workflow_dispatch:
+  pull_request: {}
+  push: { branches: [main] }
 
 env:
   UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
@@ -26,15 +24,10 @@ jobs:
           path: Library
           key: Library
 
-      # Test (Currently Broken)
-      #- name: Run tests
-      #  uses: webbertakken/unity-test-runner@v1.3
-      #  with:
-      #    unityVersion: 2019.2.11f1
-
-      # Build
-      - name: Build project
-        uses: webbertakken/unity-builder@v0.10
+      - name: Unity - Test runner
+        uses: game-ci/unity-test-runner@v2.0-alpha-2
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }} 
         with:
-          unityVersion: 2019.2.11f1
-          targetPlatform: StandaloneLinux64
+          # remove me soon!
+          unityVersion: 2019.4.19f1
