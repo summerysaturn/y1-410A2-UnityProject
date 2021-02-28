@@ -1,0 +1,15 @@
+https://docs.unity3d.com/ScriptReference/Object.Instantiate.html
+https://docs.unity3d.com/ScriptReference/WaitForSeconds.html
+https://forum.unity.com/threads/adding-comments-in-inspector.47595/
+https://forum.unity.com/threads/2d-scrolling-background.7163/
+https://docs.unity3d.com/ScriptReference/Object.Destroy.html
+https://forum.unity.com/threads/fixed-camera-width.174221/
+https://docs.unity3d.com/2020.2/Documentation/Manual/class-TextureImporterOverride.html
+https://forum.unity.com/threads/solved-instantiate-as-child.30654/
+https://docs.unity3d.com/ScriptReference/GameObject.GetComponent.html
+https://docs.unity3d.com/ScriptReference/SpriteRenderer.html
+https://docs.unity3d.com/ScriptReference/Mathf.Floor.html
+https://docs.unity3d.com/ScriptReference/Random-value.html
+https://docs.unity3d.com/ScriptReference/Random.Range.html
+https://www.symbolab.com/solver/line-equation-calculator/line%20%5Cleft(2520%2C%200%5Cright)%2C%20%5Cleft(1920%2C%20-2%5Cright)
+https://stackoverflow.com/questions/61208020/can-i-get-touch-position-and-mouse-position-at-once-in-unity
