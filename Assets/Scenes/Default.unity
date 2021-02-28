@@ -222,7 +222,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 133596158}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -394,7 +395,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: -6859001260349468157, guid: b6dbbf7dfa3db84479724f8d4b77e008,
     type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.3882353}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -492,7 +493,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: -1177934027866655137, guid: b6dbbf7dfa3db84479724f8d4b77e008,
     type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.3882353}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -502,6 +503,50 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &133596157
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 133596158}
+  - component: {fileID: 133596159}
+  m_Layer: 0
+  m_Name: Player
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &133596158
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 133596157}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 813986899}
+  m_Father: {fileID: 89627594}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &133596159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 133596157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d19193ceec64904282c3dbc9f07a3bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &156622844
 GameObject:
   m_ObjectHideFlags: 0
@@ -763,7 +808,7 @@ RectTransform:
   m_Children:
   - {fileID: 228558526}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -858,7 +903,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: -1177934027866655137, guid: b6dbbf7dfa3db84479724f8d4b77e008,
     type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.3882353}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1089,7 +1134,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: -6859001260349468157, guid: b6dbbf7dfa3db84479724f8d4b77e008,
     type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.3882353}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1163,7 +1208,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &573146491
 GameObject:
@@ -1282,7 +1327,7 @@ GameObject:
   - component: {fileID: 813986899}
   - component: {fileID: 813986898}
   m_Layer: 0
-  m_Name: player-ship-001_1
+  m_Name: Ship
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1346,13 +1391,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 813986897}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -6.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1298284785}
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_Father: {fileID: 133596158}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &862548754
 GameObject:
@@ -1436,7 +1481,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 3096079610185876687, guid: 2cfee8e5d4a08314dbcdef15f1dc08dc, type: 3}
   timeout: 10
-  offset: {x: 0, y: 15, z: 0}
+  offset: {x: 0, y: 15, z: 8}
 --- !u!1001 &1019116251
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1630,7 +1675,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 6326231466481203021, guid: b6dbbf7dfa3db84479724f8d4b77e008,
     type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.3882353}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1651,7 +1696,7 @@ GameObject:
   - component: {fileID: 1298284785}
   - component: {fileID: 1298284786}
   m_Layer: 0
-  m_Name: player-weapons-001_1
+  m_Name: WeaponOverlay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2141,7 +2186,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 6326231466481203021, guid: b6dbbf7dfa3db84479724f8d4b77e008,
     type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.3882353}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
