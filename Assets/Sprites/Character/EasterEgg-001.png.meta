@@ -1,25 +1,19 @@
 fileFormatVersion: 2
-guid: 21e5687c7cc4d88468446754941e716e
+guid: 967aa59b1a1907f439f7c937e8655555
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -666372824996739179
-    second: player-ship-001_0
+      213: 563460044817423617
+    second: EasterEgg-001_0
   - first:
-      213: -1420271657975342378
-    second: player-ship-001_1
+      213: -8247886222369754054
+    second: EasterEgg-001_1
   - first:
-      213: -5751533570000535065
-    second: player-ship-001_2
+      213: -2147377290537096876
+    second: EasterEgg-001_2
   - first:
-      213: -4673105135823718113
-    second: player-ship-001_3
-  - first:
-      213: 8641503903652169043
-    second: player-ship-001_4
-  - first:
-      213: 9004946384957700773
-    second: player-ship-001_5
+      213: 2188417711595871629
+    second: EasterEgg-001_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -101,17 +95,92 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: player-ship-001_0
+      name: EasterEgg-001_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 96
+        width: 128
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10dd778ecefc1d700800000000000000
+      internalID: 563460044817423617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EasterEgg-001_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 128
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a34ffcf0e2f998d80800000000000000
+      internalID: -8247886222369754054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EasterEgg-001_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 128
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 459abc64bbbf232e0800000000000000
+      internalID: -2147377290537096876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EasterEgg-001_3
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 32
-        height: 48
+        width: 128
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -119,113 +188,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 597881e327190c6f0800000000000000
-      internalID: -666372824996739179
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: player-ship-001_1
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 0
-        width: 32
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6da13d5b37e2a4ce0800000000000000
-      internalID: -1420271657975342378
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: player-ship-001_2
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 0
-        width: 32
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7e14266e0b27e20b0800000000000000
-      internalID: -5751533570000535065
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: player-ship-001_3
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 0
-        width: 32
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f197c2d53abc52fb0800000000000000
-      internalID: -4673105135823718113
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: player-ship-001_4
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 0
-        width: 32
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 355c656040acce770800000000000000
-      internalID: 8641503903652169043
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: player-ship-001_5
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 0
-        width: 32
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5aa77d0e60ff7fc70800000000000000
-      internalID: 9004946384957700773
+      spriteID: d8d58df5052de5e10800000000000000
+      internalID: 2188417711595871629
       vertices: []
       indices: 
       edges: []

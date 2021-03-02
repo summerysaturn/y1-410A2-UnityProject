@@ -13,3 +13,12 @@ https://docs.unity3d.com/ScriptReference/Random-value.html
 https://docs.unity3d.com/ScriptReference/Random.Range.html
 https://www.symbolab.com/solver/line-equation-calculator/line%20%5Cleft(2520%2C%200%5Cright)%2C%20%5Cleft(1920%2C%20-2%5Cright)
 https://stackoverflow.com/questions/61208020/can-i-get-touch-position-and-mouse-position-at-once-in-unity
+https://forum.unity.com/threads/how-to-change-a-variable-from-another-script.701915/
+https://www.w3schools.com/cs/cs_method_parameters.asp
+https://docs.unity3d.com/ScriptReference/Mathf.Clamp.html
+https://docs.unity3d.com/ScriptReference/Transform.GetChild.html
+https://docs.unity3d.com/ScriptReference/Camera.ScreenPointToRay.html
+https://docs.unity3d.com/ScriptReference/Ray.GetPoint.html
+https://docs.unity3d.com/ScriptReference/MonoBehaviour.StopCoroutine.html
+https://learn.unity.com/tutorial/lists-and-dictionaries#
+https://docs.unity3d.com/ScriptReference/Vector3.MoveTowards.html

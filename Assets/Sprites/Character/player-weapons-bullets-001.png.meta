@@ -1,19 +1,19 @@
 fileFormatVersion: 2
-guid: ff06c669e2938174187dfca2ea0598ad
+guid: 1e934a543bb75a844ab7ea18056dfc9d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7054189849373140230
-    second: enemy-ship-001_0
+      213: 7771239587200791601
+    second: player-weapons-bullets-001_0
   - first:
-      213: -1683934294203652948
-    second: enemy-ship-001_1
+      213: -7602879921560833512
+    second: player-weapons-bullets-001_1
   - first:
-      213: -3488411245785823345
-    second: enemy-ship-001_2
+      213: -5258249457586548544
+    second: player-weapons-bullets-001_2
   - first:
-      213: -562547629712945997
-    second: enemy-ship-001_3
+      213: -5614108990605004751
+    second: player-weapons-bullets-001_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -95,17 +95,29 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: enemy-ship-001_0
+      name: player-weapons-bullets-001_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 32
-        height: 48
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -113,20 +125,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: afa92f9e4bb7a1e90800000000000000
-      internalID: -7054189849373140230
+      spriteID: 1347e831b3df8db60800000000000000
+      internalID: 7771239587200791601
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: enemy-ship-001_1
+      name: player-weapons-bullets-001_1
       rect:
         serializedVersion: 2
         x: 32
         y: 0
         width: 32
-        height: 48
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -134,20 +146,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ca4a4e86ea671a8e0800000000000000
-      internalID: -1683934294203652948
+      spriteID: 812ba6d3ef42d7690800000000000000
+      internalID: -7602879921560833512
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: enemy-ship-001_2
+      name: player-weapons-bullets-001_2
       rect:
         serializedVersion: 2
         x: 64
         y: 0
         width: 32
-        height: 48
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -155,20 +167,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f874570547ca69fc0800000000000000
-      internalID: -3488411245785823345
+      spriteID: 0c0d92c4af1f607b0800000000000000
+      internalID: -5258249457586548544
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: enemy-ship-001_3
+      name: player-weapons-bullets-001_3
       rect:
         serializedVersion: 2
         x: 96
         y: 0
         width: 32
-        height: 48
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -176,8 +188,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3bcc8b949ed6138f0800000000000000
-      internalID: -562547629712945997
+      spriteID: 13079ac2e9da612b0800000000000000
+      internalID: -5614108990605004751
       vertices: []
       indices: 
       edges: []
