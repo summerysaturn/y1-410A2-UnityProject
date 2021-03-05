@@ -14,12 +14,14 @@ public class PlayerController : MonoBehaviour
   public int bulletID = 1;   // display sprite
   public float shootSpeed = 5f; // bullets per second
 
+  public bool debug = true; // mouse control debug switch
+
   [Header("- Movement Handling")]
   //private Vector3 lastMousePosition; mouse support
   private Vector2 lastTouchPosition;
   private Vector2 normalisedTouch;
   private Vector2 screenSize;
-  public Vector4 touchDeadzone = new Vector4 (
+  public Vector4 touchDeadzone = new Vector4(
     35,
     10,
     5,
@@ -47,7 +49,8 @@ public class PlayerController : MonoBehaviour
 
   public GameObject weaponPrefab;
 
-  void Start() {
+  void Start()
+  {
 
     // Get Transform References from heirarchy
     Ship = transform.GetChild(0);
@@ -58,9 +61,9 @@ public class PlayerController : MonoBehaviour
   void UpdateSprites()
   {
     // update sprites
-    SelectedWeapon   = WeaponTypes[weaponID];
+    SelectedWeapon = WeaponTypes[weaponID];
     SelectedWeaponUI = WeaponTypesUI[weaponID];
-    SelectedBullet   = BulletTypes[bulletID];
+    SelectedBullet = BulletTypes[bulletID];
 
     Ship.transform.GetChild(1)
                   .GetComponent<SpriteRenderer>()
@@ -73,17 +76,32 @@ public class PlayerController : MonoBehaviour
 
   void Update()
   {
-    if (lastWeaponID != weaponID || lastBulletID != bulletID) {
+    if (lastWeaponID != weaponID || lastBulletID != bulletID)
+    {
       UpdateSprites();
     }
     lastWeaponID = weaponID;
     lastBulletID = bulletID;
 
+    if (debug)
+    {
+      lastTouchPosition = Input.mousePosition;
+      MoveMarker();
+
+      if (lastShoot + (1 / shootSpeed) < Time.time)
+      {
+        lastShoot = Time.time;
+        GameObject child = Instantiate(weaponPrefab, Ship.transform.position + offset, Quaternion.identity);
+        child.GetComponent<SpriteRenderer>().sprite = SelectedBullet;
+      }
+    }
+
     if (Input.touchCount > 0)
     {
       lastTouchPosition = Input.touches[0].position;
       MoveMarker();
-      if (lastShoot + (1/shootSpeed) < Time.time)
+
+      if (lastShoot + (1 / shootSpeed) < Time.time)
       {
         lastShoot = Time.time;
         GameObject child = Instantiate(weaponPrefab, Ship.transform.position + offset, Quaternion.identity);
@@ -101,10 +119,11 @@ public class PlayerController : MonoBehaviour
     ShipMarker.transform.position = ray.GetPoint(10);
   }
 
-  void Move() {
+  void Move()
+  {
     Ship.transform.position = Vector3.Lerp(
       Ship.transform.position,
-      ShipMarker.transform.position - new Vector3(0,0,1),
+      ShipMarker.transform.position - new Vector3(0, 0, 1),
       MoveSpeed * Time.deltaTime
     );
   }
@@ -116,7 +135,7 @@ public class PlayerController : MonoBehaviour
       Camera.main.pixelHeight
     );
 
-    return new Vector2 (
+    return new Vector2(
       Mathf.Clamp(
         xy.x,
         0 + screenSize.x * (touchDeadzone.w / 100),
