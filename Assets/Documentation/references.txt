@@ -24,4 +24,5 @@ https://learn.unity.com/tutorial/lists-and-dictionaries#
 https://docs.unity3d.com/ScriptReference/Vector3.MoveTowards.html
 https://www.fontspace.com/category/bitmap
 https://docs.unity3d.com/ScriptReference/Input-mousePosition.html
-
+https://docs.unity3d.com/ScriptReference/Camera-main.html
+https://docs.unity3d.com/ScriptReference/Camera-orthographicSize.html
