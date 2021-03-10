@@ -5,6 +5,10 @@ namespace StateMachine
   public class State
   {
     protected FSM m_fsm;
+
+    public State()
+    {
+    }
     public State(FSM fsm)
     {
       m_fsm = fsm;
@@ -18,12 +22,21 @@ namespace StateMachine
 
   public class FSM
   {
-    protected List<State> m_states;
+    protected Dictionary<int, State> m_states = new Dictionary<int, State>();
     protected State m_currentState;
 
-    public void Add(State state)
+    public FSM()
     {
-      m_states.Add(state);
+    }
+
+    public void Add(int key, State state)
+    {
+      m_states.Add(key, state);
+    }
+
+    public State GetState(int key)
+    {
+      return m_states[key];
     }
 
     public void SetCurrentState(State state)
@@ -46,6 +59,14 @@ namespace StateMachine
       if (m_currentState != null)
       {
         m_currentState.Update();
+      }
+    }
+
+    public void FixedUpdate()
+    {
+      if (m_currentState != null)
+      {
+        m_currentState.FixedUpdate();
       }
     }
   }

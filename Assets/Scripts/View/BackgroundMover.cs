@@ -11,9 +11,18 @@ public class BackgroundMover : MonoBehaviour
     // is in units per second
     public float speed = 2.0f;
 
+    public LogicController Logic;
 
     // Move Object at the end of the frame
     void FixedUpdate()
+    {
+      if (!Logic.Paused)
+      {
+        MoveSelf();
+      }
+    }
+
+    void MoveSelf()
     {
       // Move the object by a speed every second (not every frame!)
       transform.position += new Vector3 (
