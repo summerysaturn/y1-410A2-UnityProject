@@ -13,7 +13,7 @@ public class EE1_Pan : MonoBehaviour
     }
   }
 
-  void Update()
+  void FixedUpdate()
   {
     transform.position += new Vector3(
       -Time.deltaTime,

@@ -11,7 +11,7 @@ public class BulletController : MonoBehaviour
 
 
   // Move Object at the end of the frame
-  void LateUpdate()
+  void FixedUpdate()
   {
     // Move the object by a speed every second (not every frame!)
     transform.position += new Vector3(

@@ -31,3 +31,15 @@ Cinemachine is used to control the camera in the platformer. The main camera has
 ## Art Notes
 
 All the art provided in this repository is created by me using Aseprite.
+
+
+## FSM
+
+"The easiest and fastest way probably is to use the enumerator type and the switch-case statement"
+
+    public virtual void Enter() { }
+    public virtual void Exit() { }
+    public virtual void Update() { }
+    public virtual void FixedUpdate() { }
+
+these are vitual entry points for states to override. "Derived classes must implement this method and handle appropriately". 

@@ -7,14 +7,13 @@ public class PlayerController : MonoBehaviour
 
   private Transform Ship;
   private Transform ShipMarker;
+  private LogicController Logic;
   private int lastWeaponID;
   private int lastBulletID;
 
   public int weaponID = 1;   // display weapon
   public int bulletID = 1;   // display sprite
   public float shootSpeed = 5f; // bullets per second
-
-  public bool debug = true; // mouse control debug switch
 
   [Header("- Movement Handling")]
   //private Vector3 lastMousePosition; mouse support
@@ -56,6 +55,9 @@ public class PlayerController : MonoBehaviour
     Ship = transform.GetChild(0);
     ShipMarker = transform.GetChild(1);
     UpdateSprites();
+
+    // Get logic controller from heirarchy
+    Logic = GameObject.Find("Foreground").GetComponent(typeof(LogicController)) as LogicController;
   }
 
   void UpdateSprites()
@@ -83,22 +85,21 @@ public class PlayerController : MonoBehaviour
     lastWeaponID = weaponID;
     lastBulletID = bulletID;
 
-    if (debug)
-    {
-      lastTouchPosition = Input.mousePosition;
-      MoveMarker();
-
-      if (lastShoot + (1 / shootSpeed) < Time.time)
-      {
-        lastShoot = Time.time;
-        GameObject child = Instantiate(weaponPrefab, Ship.transform.position + offset, Quaternion.identity);
-        child.GetComponent<SpriteRenderer>().sprite = SelectedBullet;
-      }
-    }
-
     if (Input.touchCount > 0)
     {
       lastTouchPosition = Input.touches[0].position;
+    }
+
+    if (Logic.Debug)
+    {
+      lastTouchPosition = Input.mousePosition;
+    }
+  }
+
+  void FixedUpdate()
+  {
+    if (Input.touchCount > 0 || Logic.Debug)
+    {
       MoveMarker();
 
       if (lastShoot + (1 / shootSpeed) < Time.time)
@@ -108,7 +109,8 @@ public class PlayerController : MonoBehaviour
         child.GetComponent<SpriteRenderer>().sprite = SelectedBullet;
       }
     }
-    Move();
+
+    MoveShip();
   }
 
   // movement system
@@ -119,7 +121,7 @@ public class PlayerController : MonoBehaviour
     ShipMarker.transform.position = ray.GetPoint(10);
   }
 
-  void Move()
+  void MoveShip()
   {
     Ship.transform.position = Vector3.Lerp(
       Ship.transform.position,

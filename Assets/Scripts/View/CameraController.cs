@@ -10,8 +10,7 @@ public class CameraController : MonoBehaviour
   public float shipOffset = 8f;
   public float shipPadding = 1.375f;
 
-  // Update is called once per frame
-  void Update()
+  void FixedUpdate()
   {
 
     // this snippet is useful for debug, as it shows the viewport size.
