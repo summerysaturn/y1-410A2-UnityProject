@@ -6,7 +6,8 @@ using StateMachine;
 namespace IntroCutscene
 {
 
-  public enum AnimationType
+  // enum of the keyframes in the animation
+  public enum Keyframe
   {
     Initial = 0,
     Pan = 1,
@@ -15,12 +16,14 @@ namespace IntroCutscene
     Exit = 4
   }
 
+  // inheritance precursor to the different keyframes
+  // ---------------------------------------------------------------------------
   public class CutsceneState : State
   {
-    public AnimationType ID { get { return _id; } }
+    public Keyframe ID { get { return _id; } }
 
     protected IntroController _cutscene = null;
-    protected AnimationType _id;
+    protected Keyframe _id;
 
     public CutsceneState(FSM fsm, IntroController cutscene) : base(fsm)
     {
@@ -51,29 +54,29 @@ namespace IntroCutscene
     }
   }
 
-
+  // first keyframe
+  // ---------------------------------------------------------------------------
   public class Cutscene_Initial : CutsceneState
   {
 
     public float Duration { get; set; } = 2f;
-
-    private float deltaTime = 0.0f;
+    private float _time = 0.0f;
     private GameObject _titleText;
     private BackgroundController _starBC;
     private SpriteRenderer _titleRenderer;
 
     public Cutscene_Initial(IntroController cutscene) : base(cutscene)
     {
-      _id = AnimationType.Initial;
+      _id = Keyframe.Initial;
       _starBC = cutscene.starBC;
     }
 
     public override void Enter()
     {
       Debug.Log("ic :: entering Cutscene_Initial");
-
-      deltaTime = Time.deltaTime;
       base.Enter();
+
+      _time = Time.deltaTime;
 
       _starBC.globalSpeed = 0f;
 
@@ -83,33 +86,40 @@ namespace IntroCutscene
 
     public override void Update()
     {
-      deltaTime += Time.deltaTime;
-
       base.Update();
 
-      if (deltaTime > Duration * 1.5f)
+      _time += Time.deltaTime;
+
+      if (_time > Duration * 1.5f)
       {
-        _cutscene.cutsceneFSM.SetCurrentState(AnimationType.Pan);
+        _cutscene.cutsceneFSM.SetCurrentState(Keyframe.Pan);
         Object.Destroy(_titleText);
       }
       else
       {
-        _titleRenderer.material.color = new Color(1.0f, 1.0f, 1.0f, 1 - deltaTime / Duration);
+        _titleRenderer.material.color = new Color(1.0f, 1.0f, 1.0f, 1 - _time / Duration);
       }
     }
   }
 
+  // second keyframe
+  // ---------------------------------------------------------------------------
   public class Cutscene_Pan : CutsceneState
   {
 
     public float speed { get; set; } = 0.05f;
+    public float keyframeLength { get; set; } = 3f;
+    private float _progress;
+    private float _time = 0.0f;
     private GameObject _mainMenu;
     private BackgroundController _starBC;
     private Vector3 _targetPos = new Vector3(0, -10, -5);
+    private Vector3 _tempTarget;
+    private Vector3 _deltaV3;
 
     public Cutscene_Pan(IntroController cutscene) : base(cutscene)
     {
-      _id = AnimationType.Pan;
+      _id = Keyframe.Pan;
       _starBC = cutscene.starBC;
       _mainMenu = cutscene.mainMenu;
     }
@@ -119,33 +129,55 @@ namespace IntroCutscene
       base.Enter();
 
       _starBC.globalSpeed = 0.5f;
-    }
-
-    public override void Exit()
-    {
-      base.Exit();
+      _time = Time.deltaTime;
     }
 
     public override void Update()
     {
       base.Update();
 
+      _time += Time.deltaTime;
+      _progress = _time / keyframeLength;
+
       if (Vector3.Distance(_mainMenu.transform.position, _targetPos) < 0.01f)
       {
-        _mainMenu.transform.position = _targetPos;
-        _starBC.globalSpeed = 0f;
-        _cutscene.cutsceneFSM.SetCurrentState(AnimationType.Launch);
+        _cutscene.cutsceneFSM.SetCurrentState(Keyframe.Launch);
       }
     }
 
     public override void FixedUpdate()
     {
-      _mainMenu.transform.position = Vector3.MoveTowards(_mainMenu.transform.position, _targetPos, speed);
-
       base.FixedUpdate();
+
+      _tempTarget = new Vector3(
+        _mainMenu.transform.position.x,
+        EaseInOutSine(0, _targetPos.y, _progress),
+        _mainMenu.transform.position.z
+      );
+      _deltaV3 = _mainMenu.transform.position - _tempTarget;
+
+      _mainMenu.transform.position = _tempTarget;
+
+      _starBC.globalSpeed = _deltaV3.y * 7.5f;
+    }
+
+    public override void Exit()
+    {
+      base.Exit();
+
+      _mainMenu.transform.position = _targetPos;
+      _starBC.globalSpeed = 0f;
+    }
+
+    static float EaseInOutSine(float start, float end, float value)
+    {
+      end -= start;
+      return -end * 0.5f * (Mathf.Cos(Mathf.PI * value) - 1) + start;
     }
   }
 
+  // third keyframe
+  // ---------------------------------------------------------------------------
   public class Cutscene_Launch : CutsceneState
   {
 
@@ -157,7 +189,7 @@ namespace IntroCutscene
 
     public Cutscene_Launch(IntroController cutscene) : base(cutscene)
     {
-      _id = AnimationType.Launch;
+      _id = Keyframe.Launch;
       _starBC = cutscene.starBC;
       _mainMenu = cutscene.mainMenu;
       _fakePlayer = cutscene.fakePlayer;
@@ -180,7 +212,7 @@ namespace IntroCutscene
       if (_fakePlayer.transform.position.y > 11)
       {
         _fakePlayer.transform.position = new Vector3(0, 11, 0);
-        _cutscene.cutsceneFSM.SetCurrentState(AnimationType.Catchup);
+        _cutscene.cutsceneFSM.SetCurrentState(Keyframe.Catchup);
       }
     }
 
@@ -196,7 +228,8 @@ namespace IntroCutscene
     }
   }
 
-
+  // fourth keyframe
+  // ---------------------------------------------------------------------------
   public class Cutscene_Catchup : CutsceneState
   {
 
@@ -204,9 +237,15 @@ namespace IntroCutscene
     private BackgroundController _starBC;
     private GameObject _fakePlayer;
 
+    public float keyframeLength { get; set; } = 5f;
+    public Vector3 targetShipPos { get; set; } = new Vector3(0,-6.5f,0);
+    private float _time;
+    private float _progress;
+
+
     public Cutscene_Catchup(IntroController cutscene) : base(cutscene)
     {
-      _id = AnimationType.Catchup;
+      _id = Keyframe.Catchup;
       _starBC = cutscene.starBC;
       _mainMenu = cutscene.mainMenu;
       _fakePlayer = cutscene.fakePlayer;
@@ -214,60 +253,78 @@ namespace IntroCutscene
 
     public override void Enter()
     {
+      _time = Time.deltaTime;
       base.Enter();
     }
 
     public override void Exit()
     {
       base.Exit();
+      _starBC.globalSpeed = 1f;
+      Object.Destroy(_mainMenu);
     }
 
     public override void Update()
     {
+      _time += Time.deltaTime;
+      _progress = _time / keyframeLength;
       base.Update();
 
-      _cutscene.cutsceneFSM.SetCurrentState(AnimationType.Exit);
+      if (_progress > 1f)
+      {
+        _cutscene.cutsceneFSM.SetCurrentState(Keyframe.Exit);
+      }
     }
 
     public override void FixedUpdate()
     {
       base.FixedUpdate();
+      _starBC.globalSpeed = _CalcSpeed(_progress, 15);
+      _fakePlayer.transform.position = new Vector3(0,_CalcShipPos(_progress,30),0) + targetShipPos;
+      _mainMenu.transform.position -= new Vector3(0,1,0);
+    }
+
+    private float _CalcSpeed (float x, int scale)
+    {
+      return -scale * Mathf.Pow(x, 2) + (scale+1 * x);
+    }
+
+    private float _CalcShipPos (float x, int scale)
+    {
+      return -scale * Mathf.Pow(x,0.75f) + scale;
     }
   }
 
-
+  // fifth keyframe
+  // ---------------------------------------------------------------------------
   public class Cutscene_Exit : CutsceneState
   {
+
+    private GameObject _fakePlayer;
+    private GameObject _player;
+
     public Cutscene_Exit(IntroController cutscene) : base(cutscene)
     {
-      _id = AnimationType.Exit;
+      _id = Keyframe.Exit;
+      _fakePlayer = cutscene.fakePlayer;
+      _player = cutscene.player;
     }
 
     public override void Enter()
     {
       base.Enter();
+
+      _fakePlayer.SetActive(false);
+      _player.SetActive(true);
+
+      // TODO: signal back to the LogicController that the cutscene is done
     }
-
-    public override void Exit()
-    {
-      base.Exit();
-    }
-
-    public override void Update()
-    {
-      base.Update();
-
-      // signal back to the LogicController that this is done
-    }
-
-    public override void FixedUpdate()
-    {
-      base.FixedUpdate();
-    }
-
   }
 
-
+  // fsm controller derived from LogicController.cs
+  // this inheritance happens to make sure that the FSM type and State type
+  // are properly changed into CutsceneFSM and CutsceneState types; they're
+  // not necessarily inherited properly.
   public class CutsceneFSM : FSM
   {
     public CutsceneFSM() : base()
@@ -279,12 +336,12 @@ namespace IntroCutscene
       m_states.Add((int)state.ID, state);
     }
 
-    public CutsceneState GetState(AnimationType key)
+    public CutsceneState GetState(Keyframe key)
     {
       return (CutsceneState)GetState((int)key);
     }
 
-    public void SetCurrentState(AnimationType stateKey)
+    public void SetCurrentState(Keyframe stateKey)
     {
       State state = m_states[(int)stateKey];
       if (state != null)
@@ -294,6 +351,7 @@ namespace IntroCutscene
     }
   }
 
+  // instance of the intro cutscene controller itself
   public class IntroController : MonoBehaviour
   {
     public CutsceneFSM cutsceneFSM = null;
@@ -303,6 +361,7 @@ namespace IntroCutscene
     public BackgroundController starBC;
     public GameObject mainMenu;
     public GameObject fakePlayer;
+    public GameObject player;
 
     void Start()
     {
@@ -314,7 +373,7 @@ namespace IntroCutscene
       cutsceneFSM.Add(new Cutscene_Catchup(this));
       cutsceneFSM.Add(new Cutscene_Exit(this));
 
-      cutsceneFSM.SetCurrentState(AnimationType.Initial);
+      cutsceneFSM.SetCurrentState(Keyframe.Initial);
 
       starBC = GameObject.Find("StarLayer").GetComponent<BackgroundController>();
       mainMenu = GameObject.Find("MainMenu");
@@ -326,6 +385,11 @@ namespace IntroCutscene
       if (cutsceneFSM != null)
       {
         cutsceneFSM.Update();
+      }
+
+      if (player == null)
+      {
+        player = GameObject.Find("Player");
       }
     }
 

@@ -37,3 +37,6 @@ https://stuartspixelgames.com/2017/08/02/make-all-of-objects-children-into-an-ar
 https://docs.unity3d.com/ScriptReference/Transform.Find.html
 https://faramira.com/enemy-behaviour-with-finite-state-machine-using-csharp-delegates-in-unity/
 https://docs.unity3d.com/ScriptReference/Object-name.html
+https://easings.net/#easeInOutCubic
+https://docs.unity3d.com/ScriptReference/Mathf.Pow.html
+https://gist.github.com/ManeFunction/9f2d437fca6ccf31e4a48fec0584e21a
