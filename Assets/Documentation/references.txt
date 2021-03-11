@@ -30,3 +30,10 @@ https://faramira.com/finite-state-machine-using-csharp-delegates-in-unity/
 https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/delegates/
 https://faramira.com/implementing-a-finite-state-machine-using-c-in-unity-part-1/
 https://gamedev.stackexchange.com/questions/73713/whats-the-difference-between-update-and-fixedupdate-in-unity-and-should-i-both
+https://docs.unity3d.com/ScriptReference/Array.Add.html
+https://docs.unity3d.com/ScriptReference/Transform.html
+https://hub.packtpub.com/arrays-lists-dictionaries-unity-3d-game-development/
+https://stuartspixelgames.com/2017/08/02/make-all-of-objects-children-into-an-array-unity-c/
+https://docs.unity3d.com/ScriptReference/Transform.Find.html
+https://faramira.com/enemy-behaviour-with-finite-state-machine-using-csharp-delegates-in-unity/
+https://docs.unity3d.com/ScriptReference/Object-name.html
